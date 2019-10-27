@@ -1,0 +1,1 @@
+# @tournant/{{componentName}}
