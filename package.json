@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/scaffold",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "CLI helper to create new Tournant UI components",
 	"main": "src/scaffold.js",
 	"bin": {
