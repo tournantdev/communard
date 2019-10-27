@@ -17,6 +17,10 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"files": [
+		"bin/",
+		"src/"
+	],
 	"author": "Tournant <team@tournant.dev> (http://www.tournant.dev)",
 	"license": "MIT",
 	"dependencies": {
