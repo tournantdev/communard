@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import fs from 'fs'
 import ncp from 'ncp'
 import path from 'path'
+import replaceInFiles from 'replace-in-files'
 import { promisify } from 'util'
 
 import toPascalCase from './toPascalCase'
@@ -33,6 +34,24 @@ async function renameTestFile(name) {
 	return rename(path.resolve(testPath, 'Name.spec.js'), path.resolve(testPath, `${toPascalCase(name)}.spec.js`))
 }
 
+async function replacePlaceHolders(name) {
+	const componentFolder = destinationFolder(name)
+
+	await replaceInFiles({
+		files: `${componentFolder}/**/*`,
+		from: /({componentName})/g,
+		to: name
+	})
+
+	await replaceInFiles({
+		files: `${componentFolder}/**/*`,
+		from: /({componentNameUppercase})/g,
+		to: `${name.charAt(0).toUpperCase()}${name.slice(1)}`
+	})
+
+	return true
+}
+
 export default async function copyTemplate({ name }) {
 	if (!fs.existsSync(PACKAGE_ROOT)) {
 		await createPackagesDirectory()
@@ -61,6 +80,7 @@ export default async function copyTemplate({ name }) {
 	}
 
 	await renameTestFile(name)
+	await replacePlaceHolders(name)
 
 	console.log('%s Project ready', chalk.green.bold('✅ DONE'))
 	return true
