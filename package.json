@@ -8,7 +8,7 @@
 		"tournant-scaffold": "bin/scaffold"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"You would better write some tests, right?\""
 	},
 	"keywords": [
 		"cli",
