@@ -4,7 +4,7 @@ import TournantComponent from './index.vue'
 export function install(Vue) {
 	if (install.installed) return
 	install.installed = true
-	Vue.component('Tournant{componentName}', TournantComponent)
+	Vue.component('Tournant{componentNameUppercase}', TournantComponent)
 }
 
 // Create module definition for Vue.use()
