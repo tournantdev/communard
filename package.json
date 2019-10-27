@@ -4,7 +4,6 @@
 	"description": "CLI helper to create new Tournant UI components",
 	"main": "src/scaffold.js",
 	"bin": {
-		"@tournant/scaffold": "bin/scaffold",
 		"tournant-scaffold": "bin/scaffold"
 	},
 	"scripts": {
