@@ -6,6 +6,9 @@ dist/
 .env.local
 .env.*.local
 
+# Packages output in here is most likely from testing and should not be comitted
+packages/
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
