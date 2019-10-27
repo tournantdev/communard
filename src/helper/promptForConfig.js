@@ -1,5 +1,7 @@
 import inquirer from 'inquirer'
-import validateName from 'validate-npm-package-name'
+
+import validatePackageName from './validators/packageName'
+import validateVersion from './validators/version'
 
 export default async function promptForConfig(options) {
 	const questions = []
@@ -8,17 +10,13 @@ export default async function promptForConfig(options) {
 		questions.push({
 			type: 'input',
 			name: 'name',
-			message: 'Enter component name.',
+			message: 'Enter component name:',
 			validate: (val) => {
-				const validated = validateName(val)
+				const validated = validatePackageName(val)
 
-				if (validated.validForNewPackages) return true
+				if (validated.valid) return true
 
-				const { errors = [], warnings = [] } = validated
-				const messages = [
-					...errors,
-					...warnings
-				]
+				const { messages } = validated
 
 				return `Component name is no valid name for a NPM package.\nErrors:\n\n${messages.join('\n')}`
 			},
@@ -30,12 +28,12 @@ export default async function promptForConfig(options) {
 		questions.push({
 			type: 'input',
 			name: 'version',
-			message: 'Enter component version.',
+			message: 'Enter component version:',
 			default: () => '0.0.1',
 			validate: val => {
-				const semantic = /^\d\.\d\.\d$/
+				const isValid = validateVersion(val)
 
-				if (val.match(semantic)) return true
+				if (isValid) return true
 
 				return 'Please enter a valid semantic version number.'
 			},
