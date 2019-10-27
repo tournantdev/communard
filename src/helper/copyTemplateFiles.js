@@ -4,8 +4,12 @@ import ncp from 'ncp'
 import path from 'path'
 import { promisify } from 'util'
 
+import toPascalCase from './toPascalCase'
+
 const access = promisify(fs.access)
 const mkdir = promisify(fs.mkdir)
+const rename = promisify(fs.rename)
+
 const copy = promisify(ncp)
 
 const TEMPLATE_PATH = path.resolve(__dirname, '../', 'template-folder')
@@ -21,6 +25,12 @@ async function copyTemplateFiles(componentName) {
 
 async function createPackagesDirectory() {
 	return mkdir(PACKAGE_ROOT)
+}
+
+async function renameTestFile(name) {
+	const testPath = path.resolve(destinationFolder(name), 'tests/unit/')
+
+	return rename(path.resolve(testPath, 'Name.spec.js'), path.resolve(testPath, `${toPascalCase(name)}.spec.js`))
 }
 
 export default async function copyTemplate({ name }) {
@@ -49,6 +59,8 @@ export default async function copyTemplate({ name }) {
 		console.error(e);
 		process.exit(1)
 	}
+
+	await renameTestFile(name)
 
 	console.log('%s Project ready', chalk.green.bold('✅ DONE'))
 	return true
