@@ -1,15 +1,22 @@
 {
-  "name": "@tournant/scaffold",
-  "version": "0.0.1",
-  "description": "CLI helper to create new Tournant UI components",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "cli",
-    "tournant"
-  ],
-  "author": "Tournant <team@tournant.dev> (http://www.tournant.dev)",
-  "license": "MIT"
+	"name": "@tournant/scaffold",
+	"version": "0.0.1",
+	"description": "CLI helper to create new Tournant UI components",
+	"main": "src/scaffold.js",
+	"bin": {
+		"@tournant/scaffold": "bin/scaffold",
+		"scaffold": "bin/scaffold"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"cli",
+		"tournant"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"author": "Tournant <team@tournant.dev> (http://www.tournant.dev)",
+	"license": "MIT",
 }
