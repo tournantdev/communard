@@ -29,12 +29,16 @@ async function createPackagesDirectory() {
 }
 
 async function renameTestFile(name) {
+	console.log('%s Renaming test file', chalk.bold('🛡 '))
+
 	const testPath = path.resolve(destinationFolder(name), 'tests/unit/')
 
 	return rename(path.resolve(testPath, 'Name.spec.js'), path.resolve(testPath, `${toPascalCase(name)}.spec.js`))
 }
 
 async function replacePlaceHolders(name) {
+	console.log('%s Replacing name placeholders', chalk.bold('🃏 '))
+
 	const componentFolder = destinationFolder(name)
 
 	await replaceInFiles({
@@ -82,7 +86,7 @@ export default async function copyTemplate({ name }) {
 	await renameTestFile(name)
 	await replacePlaceHolders(name)
 
-	console.log('%s Project ready', chalk.green.bold('✅ DONE'))
+	console.log('%s Project files ready', chalk.green.bold('✅ DONE'))
 	return true
 }
 
