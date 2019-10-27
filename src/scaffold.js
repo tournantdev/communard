@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import parseArguments from './helper/parseArguments'
 import promptForConfig from './helper/promptForConfig'
 import copyTemplateFiles from './helper/copyTemplateFiles'
+import createPackageJson from './helper/createPackageJson'
 
 export async function scaffold(args) {
 	let options = parseArguments(args)
@@ -11,9 +12,10 @@ export async function scaffold(args) {
 	console.log(options);
 
 	await copyTemplateFiles(options)
+	await createPackageJson(options)
 
 	console.log(
 		`%s Component folder for ${options.name} has been created.`,
-		chalk.green.bold('👾 END')
+		chalk.grey.bold('👾 END')
 	)
 }
