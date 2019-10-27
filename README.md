@@ -27,7 +27,7 @@ yarn add @tournant/scaffold
 You can set `name`, `version` and `description` via command line arguments. Example:
 
 ```
-scaffold --name rainbow-button --version 0.2.0 --description A rainbowy button
+tournant-scaffold --name rainbow-button --version 0.2.0 --description A rainbowy button
 ```
 
 #### Aliases
