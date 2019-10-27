@@ -1,6 +1,7 @@
-const inquirer = require('inquirer')
+import inquirer from 'inquirer'
+import validateName from 'validate-npm-package-name'
 
-module.exports = async function promptForConfig(options) {
+export default async function promptForConfig(options) {
 	const questions = []
 
 	if (!options.name) {
@@ -8,7 +9,19 @@ module.exports = async function promptForConfig(options) {
 			type: 'input',
 			name: 'name',
 			message: 'Enter component name.',
-			validate: (val) => val.length > 0 || 'Please enter a name.',
+			validate: (val) => {
+				const validated = validateName(val)
+
+				if (validated.validForNewPackages) return true
+
+				const { errors = [], warnings = [] } = validated
+				const messages = [
+					...errors,
+					...warnings
+				]
+
+				return `Component name is no valid name for a NPM package.\nErrors:\n\n${messages.join('\n')}`
+			},
 			transformer: (val) => `@tournant/${val}`
 		})
 	}
