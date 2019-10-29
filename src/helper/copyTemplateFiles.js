@@ -50,7 +50,7 @@ async function replacePlaceHolders(name) {
 	await replaceInFiles({
 		files: `${componentFolder}/**/*`,
 		from: /({componentNameUppercase})/g,
-		to: `${name.charAt(0).toUpperCase()}${name.slice(1)}`
+		to: toPascalCase(name)
 	})
 
 	return true
