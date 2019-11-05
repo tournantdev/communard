@@ -1,5 +1,11 @@
 # Book of Changes
 
+## v2.0.0 – 2019-11-05
+
+## 🏡 Chore
+
+- Change name of package
+
 ## v1.1.0 – 2019-10-29
 
 ### 🚀 New

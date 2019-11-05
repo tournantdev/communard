@@ -1,10 +1,10 @@
 {
-	"name": "@tournant/scaffold",
+	"name": "@tournant/communard",
 	"version": "1.1.0",
 	"description": "CLI helper to create new Tournant UI components",
 	"main": "src/scaffold.js",
 	"bin": {
-		"tournant-scaffold": "bin/scaffold"
+		"communard": "bin/scaffold"
 	},
 	"scripts": {
 		"test": "echo \"You would better write some tests, right?\""
