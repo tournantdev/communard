@@ -36,6 +36,14 @@ async function renameTestFile(name) {
 	return rename(path.resolve(testPath, 'Name.spec.js'), path.resolve(testPath, `${toPascalCase(name)}.spec.js`))
 }
 
+async function renameStorybookFile(name) {
+	console.log('%s Renaming stories file', chalk.bold('📓 '))
+
+	const testPath = path.resolve(destinationFolder(name), 'tests/')
+
+	return rename(path.resolve(testPath, 'name.stories.js'), path.resolve(testPath, `${name}.stories.js`))
+}
+
 async function replacePlaceHolders(name) {
 	console.log('%s Replacing name placeholders', chalk.bold('🃏 '))
 
@@ -84,6 +92,7 @@ export default async function copyTemplate({ name }) {
 	}
 
 	await renameTestFile(name)
+	await renameStorybookFile(name)
 	await replacePlaceHolders(name)
 
 	console.log('%s Project files ready', chalk.green.bold('✅ DONE'))
