@@ -1,6 +1,6 @@
 {
 	"name": "@tournant/communard",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "CLI helper to create new Tournant UI components",
 	"main": "src/scaffold.js",
 	"bin": {
